@@ -186,6 +186,12 @@ $app->run();
 echo "Server running at http://".getenv('X_LISTEN'). PHP_EOL;
 ```
 
+## Tests
+
+```
+./vendor/bin/phpunit tests
+``` 
+
 ## License
 
 MIT
