@@ -2,6 +2,12 @@
 
 "Framework X has provided a wealth of inspiration." - [Framework X](https://framework-x.org/)
 
+
+Like Laravel Route support
+
+* middleware
+* group
+
 ## install
 
 ```
