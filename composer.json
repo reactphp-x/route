@@ -1,0 +1,21 @@
+{
+    "name": "reactphp-x/route",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "ReactphpX\\Route\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wpjscc",
+            "email": "wpjscc@gmail.com"
+        }
+    ],
+    "require-dev": {
+        "php-di/php-di": "^7.0"
+    },
+    "require": {
+        "clue/framework-x": "^0.16"
+    }
+}
