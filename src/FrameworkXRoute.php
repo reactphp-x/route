@@ -35,7 +35,7 @@ final class FrameworkXRoute
      * @param callable|class-string ...$handlers
      */
 
-    public function map(array $methods, string $route, $handler, ...$handlers): void
+    protected function _map(array $methods, string $route, $handler, ...$handlers): void
     {
         $this->app->map($methods, $route, $handler, ...$handlers);
     }

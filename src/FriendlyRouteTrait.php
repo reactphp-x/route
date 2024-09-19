@@ -20,7 +20,7 @@ trait FriendlyRouteTrait
      */
     public function get(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['GET'], $route, $handler, ...$handlers);
+        $this->map(['GET'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -30,7 +30,7 @@ trait FriendlyRouteTrait
      */
     public function head(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['HEAD'], $route, $handler, ...$handlers);
+        $this->map(['HEAD'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -40,7 +40,7 @@ trait FriendlyRouteTrait
      */
     public function post(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['POST'], $route, $handler, ...$handlers);
+        $this->map(['POST'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -50,7 +50,7 @@ trait FriendlyRouteTrait
      */
     public function put(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['PUT'], $route, $handler, ...$handlers);
+        $this->map(['PUT'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -60,7 +60,7 @@ trait FriendlyRouteTrait
      */
     public function patch(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['PATCH'], $route, $handler, ...$handlers);
+        $this->map(['PATCH'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -70,7 +70,7 @@ trait FriendlyRouteTrait
      */
     public function delete(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['DELETE'], $route, $handler, ...$handlers);
+        $this->map(['DELETE'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -85,7 +85,7 @@ trait FriendlyRouteTrait
             $route = '*';
         }
 
-        $this->_map(['OPTIONS'], $route, $handler, ...$handlers);
+        $this->map(['OPTIONS'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -95,7 +95,7 @@ trait FriendlyRouteTrait
      */
     public function any(string $route, $handler, ...$handlers): void
     {
-        $this->_map(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], $route, $handler, ...$handlers);
+        $this->map(['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'], $route, $handler, ...$handlers);
     }
 
     /**
@@ -181,7 +181,7 @@ trait FriendlyRouteTrait
      * @param callable|class-string $handler
      * @param callable|class-string ...$handlers
      */
-    private function _map(array $methods, string $route, $handler, ...$handlers): void
+    public function map(array $methods, string $route, $handler, ...$handlers): void
     {
         if (!empty($this->currentGroupHandlers)) {
             \array_unshift($handlers, $handler);
@@ -189,7 +189,7 @@ trait FriendlyRouteTrait
             $handler = \array_shift($currentGroupHandlers);
             $handlers = \array_merge($currentGroupHandlers, $handlers);
         }
-        $this->map($methods, $this->currentGroupPrefix . $route, $handler, ...$handlers);
+        $this->_map($methods, $this->currentGroupPrefix . $route, $handler, ...$handlers);
     }
 
     /**
@@ -211,6 +211,6 @@ trait FriendlyRouteTrait
      * @param callable|class-string $handler
      * @param callable|class-string ...$handlers
     */
-    abstract public function map(array $methods, string $route, $handler, ...$handlers): void;
+    abstract protected function _map(array $methods, string $route, $handler, ...$handlers): void;
     
 }

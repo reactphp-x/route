@@ -189,7 +189,7 @@ echo "Server running at http://".getenv('X_LISTEN'). PHP_EOL;
 ## Tests
 
 ```
-./vendor/bin/phpunit tests
+./vendor/bin/phpunit tests/RoutesTest.php
 ``` 
 
 ## License
