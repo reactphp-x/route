@@ -30,7 +30,7 @@ class RouteHandler
 
     private ContainerInterface $container;
 
-    public function __construct(ContainerInterface $container = null)
+    public function __construct(?ContainerInterface $container = null)
     {
         $this->routeCollector = new RouteCollector(new RouteParser(), new RouteGenerator());
         $this->container = $container;
@@ -63,7 +63,7 @@ class RouteHandler
                         $this->handler = $handler;
                         $this->container = $container;
                     }
-                    public function __invoke(ServerRequestInterface $request, callable $next = null) {
+                    public function __invoke(ServerRequestInterface $request, ?callable $next = null) {
                         
                         $class = $this->handler;
 
